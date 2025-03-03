@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
-  KeyboardAvoidingView,
+  boardAvoidingView,
   Platform,
-  Keyboard,
+  board,
   TouchableWithoutFeedback,
 } from 'react-native';
 
@@ -51,8 +51,8 @@ const Login = props => {
   };
 
   return (
-    <KeyboardAvoidingView behavior = {Platform.OS === "ios" ? "padding" : "height"} style = {{flex: 1}}>
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <boardAvoidingView behavior = {Platform.OS === "ios" ? "padding" : "height"} style = {{flex: 1}}>
+    <TouchableWithoutFeedback onPress={board.dismiss}>
 
     <ImageBackground 
       source={require("./assets/banner.jpg")} 
@@ -76,7 +76,7 @@ const Login = props => {
     </ImageBackground>
 
     </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </boardAvoidingView>
   );
 };
 
@@ -122,7 +122,7 @@ const HomeScreen = props => {
       {/* OPEN DOOR*/}
       <TouchableOpacity style ={styles.button} onPress={door}>
         <Text style = {styles.f_button}>
-          <Icon name='key'size={15}/>
+          <Icon name=''size={15}/>
           {"   "}OPEN DOOR
         </Text>
       </TouchableOpacity>
@@ -132,7 +132,7 @@ const HomeScreen = props => {
   );
 };
 const ID_USERNAME = '';
-const KEY = '';
+const K = '';
 // CONTROL SCREEN
 const Control = props => {
   const [fan, setFAN] = useState(false)
@@ -154,7 +154,7 @@ const Control = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': KEY
+          'X-AIO-': K
         },
         body: JSON.stringify({ value: lightsignal  })
       })
@@ -175,7 +175,7 @@ const Control = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': KEY
+          'X-AIO-': K
         },
         body: JSON.stringify({ value: fansignal  })
       })
@@ -317,7 +317,7 @@ const OpenDoor = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': KEY
+          'X-AIO-': K
         },
         body: JSON.stringify({ value: doorsignal  })
       })
