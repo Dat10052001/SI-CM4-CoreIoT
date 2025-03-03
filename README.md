@@ -1,7 +1,8 @@
-# React Native Project
+# SMART IRRGATION APP
 
 ## Giới thiệu
 Dự án này là một ứng dụng di động được xây dựng bằng React Native.
+Ứng dụng này cho phép người dùng điều khiển hệ thống tưới thông minh qua điện thoại di động.
 
 ## Yêu cầu hệ thống
 - Node.js (phiên bản mới nhất hoặc LTS)
