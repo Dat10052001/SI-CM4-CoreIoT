@@ -131,7 +131,6 @@ const HomeScreen = props => {
     </View>
   );
 };
-const ID_USERNAME = '';
 
 // CONTROL SCREEN
 const Control = props => {
