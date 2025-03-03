@@ -150,7 +150,7 @@ const Control = props => {
         lightsignal = 1
       }
       else lightsignal = 0
-      const response = await fetch(`https://io.adafruit.com/api/v2/${ID_USERNAME}/feeds/button1/data`, {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
