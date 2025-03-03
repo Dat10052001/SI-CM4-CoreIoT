@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
-  boardAvoidingView,
   Platform,
-  board,
+  Keyboard,
+  KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from 'react-native';
 
@@ -51,8 +51,8 @@ const Login = props => {
   };
 
   return (
-    <boardAvoidingView behavior = {Platform.OS === "ios" ? "padding" : "height"} style = {{flex: 1}}>
-    <TouchableWithoutFeedback onPress={board.dismiss}>
+    <KeyboardAvoidingView behavior = {Platform.OS === "ios" ? "padding" : "height"} style = {{flex: 1}}>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
     <ImageBackground 
       source={require("./assets/banner.jpg")} 
@@ -76,7 +76,7 @@ const Login = props => {
     </ImageBackground>
 
     </TouchableWithoutFeedback>
-    </boardAvoidingView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -133,6 +133,9 @@ const HomeScreen = props => {
 };
 
 // CONTROL SCREEN
+const ID_USERNAME = '';
+const IO_KEY = '';
+// CONTROL SCREEN
 const Control = props => {
   const [fan, setFAN] = useState(false)
   const toggleFAN = (value) => {
@@ -149,11 +152,11 @@ const Control = props => {
         lightsignal = 1
       }
       else lightsignal = 0
-      const response = await fetch('', {
+      const response = await fetch(``, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-': K
+          'X-AIO-Key': IO_KEY
         },
         body: JSON.stringify({ value: lightsignal  })
       })
@@ -170,11 +173,11 @@ const Control = props => {
         fansignal = 1
       }
       else fansignal = 0
-      const response = await fetch('', {
+      const response = await fetch(``, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-': K
+          'X-AIO-Key': IO_KEY
         },
         body: JSON.stringify({ value: fansignal  })
       })
@@ -258,7 +261,7 @@ const Data = props => {
       </View>
       <View>
       <View style ={styles.button}>
-        <Text style = {styles.button1}>
+        <Text style = {styles.f_button}>
           <Icon name='temperature-high'size={15}/>
           {"   "}TEMPERATURE{"\n\n"}
           <Text style={{fontWeight: 'bold'}}>
@@ -267,7 +270,7 @@ const Data = props => {
         </Text>
       </View>
       <View style ={styles.button}>
-        <Text style={styles.button1}>
+        <Text style={styles.f_button}>
           <Icon name='lightbulb' size={15}/>
           {"   "}LIGHT{"\n\n"}
           <Text style={{fontWeight: 'bold'}}>
@@ -276,7 +279,7 @@ const Data = props => {
         </Text>
       </View>
       <View style ={styles.button}>
-        <Text style={styles.button1}>
+        <Text style={styles.f_button}>
           <Icon name='water' size={15}/>
           {"   "}HUMIDITY{"\n\n"}
           <Text style={{fontWeight: 'bold'}}>
@@ -312,11 +315,11 @@ const OpenDoor = props => {
   const sendSignalDoor = async () => {
     try {
       let doorsignal = "4";
-      const response = await fetch('', {
+      const response = await fetch(``, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-': K
+          'X-AIO-Key': IO_KEY
         },
         body: JSON.stringify({ value: doorsignal  })
       })
@@ -334,13 +337,13 @@ const OpenDoor = props => {
         </Text>
       </View>
       <TouchableOpacity style ={styles.button} onPress={sendSignalDoor}>
-        <Text style = {styles.button1}>
+        <Text style = {styles.f_button}>
           <Icon name='adjust' size={15}/>
           {"   "}CHECK BY FACE
         </Text>
       </TouchableOpacity>
       <View style ={styles.button}>
-        <Text style={styles.button1}>
+        <Text style={styles.f_button}>
           <Icon name='door-closed' size={15}/>
           {"   "}DOOR'S STATE{"\n\n"}
           <Text style={{fontWeight: 'bold'}}>
