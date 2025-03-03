@@ -18,7 +18,7 @@ const App = () => {
         <Stack.Screen name="YOUR FARM" component={HomeScreen} />
         <Stack.Screen name="CONTROL" component={Control} />
         <Stack.Screen name="DATA" component={Data} />
-        <Stack.Screen name="OTHERS" component={OpenDoor} />
+        <Stack.Screen name="OTHERSS" component={OpenDoor} />
       </Stack.Navigator>
     </NavigationContainer>
   );
