@@ -131,8 +131,8 @@ const HomeScreen = props => {
     </View>
   );
 };
-const ID_USERNAME = 'huyn02';
-const IO_KEY = 'aio_SqTg91maCLWtArGLDrKNRIwZuULH';
+const ID_USERNAME = '';
+const IO_KEY = '';
 // CONTROL SCREEN
 const Control = props => {
   const [fan, setFAN] = useState(false)
@@ -171,7 +171,7 @@ const Control = props => {
         fansignal = 1
       }
       else fansignal = 0
-      const response = await fetch(`https://io.adafruit.com/api/v2/${ID_USERNAME}/feeds/button3/data`, {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -313,7 +313,7 @@ const OpenDoor = props => {
   const sendSignalDoor = async () => {
     try {
       let doorsignal = "4";
-      const response = await fetch(`https://io.adafruit.com/api/v2/${ID_USERNAME}/feeds/receive/data`, {
+      const response = await fetch('', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
