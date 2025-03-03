@@ -132,7 +132,7 @@ const HomeScreen = props => {
   );
 };
 const ID_USERNAME = '';
-const IO_KEY = '';
+const KEY = '';
 // CONTROL SCREEN
 const Control = props => {
   const [fan, setFAN] = useState(false)
@@ -154,7 +154,7 @@ const Control = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': IO_KEY
+          'X-AIO-Key': KEY
         },
         body: JSON.stringify({ value: lightsignal  })
       })
@@ -175,7 +175,7 @@ const Control = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': IO_KEY
+          'X-AIO-Key': KEY
         },
         body: JSON.stringify({ value: fansignal  })
       })
@@ -317,7 +317,7 @@ const OpenDoor = props => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-AIO-Key': IO_KEY
+          'X-AIO-Key': KEY
         },
         body: JSON.stringify({ value: doorsignal  })
       })
