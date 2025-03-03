@@ -55,6 +55,7 @@ npx expo start
 │   ├── assets/      # Ảnh, icon, font,...
 │   ├── utils/       # Các hàm tiện ích
 ├── App.js           # Entry point của ứng dụng
+├── style.js         # File CSS của ứng dụng
 ├── package.json     # File cấu hình dependencies
 └── README.md        # Tài liệu hướng dẫn
 ```
