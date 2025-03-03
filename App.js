@@ -132,7 +132,7 @@ const HomeScreen = props => {
   );
 };
 const ID_USERNAME = '';
-const K = '';
+
 // CONTROL SCREEN
 const Control = props => {
   const [fan, setFAN] = useState(false)
