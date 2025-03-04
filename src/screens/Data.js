@@ -8,15 +8,15 @@ const Data = props => {
   const [humid, setHumid] = useState(0);
   const [door, setDoor] = useState("");
 
-  useEffect(() => {
-    socket.onmessage = (message) => {
-      const data = JSON.parse(message.data);
-      setTemp(data.temp);
-      setHumid(data.humid);
-      setLight(data.light);
-      setDoor(data.door === "1" ? "Open" : "Close");
-    };
-  }, []);
+  // useEffect(() => {
+  //   socket.onmessage = (message) => {
+  //     const data = JSON.parse(message.data);
+  //     setTemp(data.temp);
+  //     setHumid(data.humid);
+  //     setLight(data.light);
+  //     setDoor(data.door === "1" ? "Open" : "Close");
+  //   };
+  // }, []);
 
   return (
     <View>

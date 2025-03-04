@@ -6,7 +6,7 @@ import Login from './src/screens/Login';
 import HomeScreen from './src/screens/HomeScreen';
 import Control from './src/screens/Control';
 import Data from './src/screens/Data';
-import OpenDoor from './src/screens/OpenDoor';
+import SignUp from './src/screens/SignUp';
 
 const App = () => {
   const Stack = createStackNavigator();
@@ -14,11 +14,11 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="STARTING" component={Start} />
+        <Stack.Screen name="SIGN UP, RESET PASSWORD" component={SignUp} />
         <Stack.Screen name="LOGIN" component={Login} />
         <Stack.Screen name="YOUR FARM" component={HomeScreen} />
         <Stack.Screen name="CONTROL" component={Control} />
         <Stack.Screen name="DATA" component={Data} />
-        <Stack.Screen name="OTHERS" component={OpenDoor} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,6 +1,100 @@
 import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
+const signupStyles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    padding: 15,
+  },
+  tab: {
+    flex: 1,
+    padding: 10,
+    alignItems: 'center',
+    borderBottomWidth: 3,
+    borderBottomColor: 'transparent',
+    borderBottomColor: '#ccc',
+  },
+  activeTab: {
+    borderBottomColor: '#059033',
+  },
+  tabText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  input: {
+    width: '80%',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 5,
+    marginVertical: 10,
+    fontSize: 16,
+    paddingLeft: 15,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    marginBottom: 5,
+    alignSelf: 'flex-start',
+    marginLeft: '10%',
+  },
+  checkbox: {
+    width: 25,
+    height: 25,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    justifyContent: 'left',
+    alignItems: 'left',
+    marginRight: 10,
+    borderRadius: 15,
+  },
+  checkboxChecked: {
+    backgroundColor: '#059033',
+  },
+  checkboxText: {
+    color: 'white',
+  },
+  label: {
+    margin: 2,
+  },
+  signup_btn: {
+    backgroundColor: '#059033',
+    color: 'white',
+    padding: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    marginTop: 50,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+  reset_btn: {
+    backgroundColor: '#059033',
+    color: 'white',
+    padding: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    marginTop: 50,
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+});
+
+const loginStyles = StyleSheet.create({
   background: {
     width: '100%',
     height: '100%',
@@ -18,7 +112,7 @@ const styles = StyleSheet.create({
     margin: 10,
     height: 60,
     width: 300,
-    borderColor: '#bcbcbc',
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 10,
     paddingLeft: 15,
@@ -86,11 +180,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   login_btn: {
-    marginBottom: 50,
-    marginTop: 50,
+    marginBottom: 80,
+    marginTop: 40,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#059033',
+    borderColor: 'gray',
     borderRadius: 10,
     color: 'white',
     fontSize: 20,
@@ -102,10 +196,9 @@ const styles = StyleSheet.create({
   },
   con_button: {
     color: 'darkgreen',
-    fontSize: 16,
-    textDecorationLine: 'underline',
+    fontSize: 15,
     fontWeight: 'bold',
   },
 });
 
-export default styles;
+export { loginStyles, signupStyles };
