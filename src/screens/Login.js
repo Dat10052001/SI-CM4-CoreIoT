@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View,
   Text,
   ImageBackground,
   TextInput,
@@ -61,7 +60,7 @@ const Login = props => {
   const login = () => {
     if (phoneNumber === '123' && password === '123') {
       Alert.alert('Login Successful', 'Welcome to your farm!', [
-        { text: 'OK', onPress: () => props.navigation.navigate('YOUR FARM') },
+        { text: 'OK', onPress: () => props.navigation.navigate('HOME') },
       ]);
     } else {
       setFailedAttempts(failedAttempts + 1);
@@ -106,10 +105,10 @@ const Login = props => {
           />
 
           <TouchableOpacity onPress={login} disabled={isButtonDisabled}>
-          <Text style=
-          {[loginStyles.login_btn, isButtonDisabled && { backgroundColor: 'gray' }]}>
-            {isButtonDisabled ? `Try again in ${countdown}s` : 'LOG IN'}
-          </Text>
+            <Text style=
+            {[loginStyles.login_btn, isButtonDisabled && { backgroundColor: 'gray' }]}>
+              {isButtonDisabled ? `Try again in ${countdown}s` : 'LOG IN'}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={signup}>
             <Text style={loginStyles.con_button}>SIGN UP OR RESET PASSWORD</Text>
