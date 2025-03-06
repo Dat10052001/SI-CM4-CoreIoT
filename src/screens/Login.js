@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  Image,
 } from 'react-native';
 import { loginStyles } from '../../styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -88,7 +89,7 @@ const Login = props => {
           resizeMode="cover"
         >
           <Text style={loginStyles.title}>WELCOME TO SMART IRRIGATION !</Text>
-          
+          <Image source={require("../assets/logo.png")} style={{width: 200, height: 200}}/>
           <TextInput
             style={loginStyles.input}
             placeholder="Enter your phone number"
@@ -111,7 +112,7 @@ const Login = props => {
             </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={signup}>
-            <Text style={loginStyles.con_button}>SIGN UP OR RESET PASSWORD</Text>
+            <Text style={loginStyles.con_button}>SIGN UP or RESET PASSWORD</Text>
           </TouchableOpacity>
         </ImageBackground>
       </TouchableWithoutFeedback>

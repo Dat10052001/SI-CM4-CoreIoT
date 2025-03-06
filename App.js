@@ -54,8 +54,8 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           {/* <Stack.Screen name="STARTING" component={Start} /> */}
-          <Stack.Screen name="SIGN UP, RESET PASSWORD" component={SignUp} />
           <Stack.Screen name="LOGIN" component={Login} />
+          <Stack.Screen name="SIGN UP, RESET PASSWORD" component={SignUp} />
           <Stack.Screen name="HOME" component={Home} options={{ headerLeft: null }} />
         </Stack.Navigator>
       </NavigationContainer>

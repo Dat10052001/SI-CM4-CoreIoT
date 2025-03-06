@@ -45,6 +45,12 @@ const signupStyles = StyleSheet.create({
     marginVertical: 10,
     fontSize: 16,
     paddingLeft: 15,
+    borderColor: '#000',
+    backgroundColor: '#fff',
+  },
+  inputEnabled: {
+    borderColor: '#000',
+    backgroundColor: '#fff',
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -57,11 +63,12 @@ const signupStyles = StyleSheet.create({
     width: 25,
     height: 25,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'black',
     justifyContent: 'left',
     alignItems: 'left',
     marginRight: 10,
     borderRadius: 15,
+    backgroundColor: 'white',
   },
   checkboxChecked: {
     backgroundColor: '#059033',
@@ -92,6 +99,18 @@ const signupStyles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
+  reset_btn1: {
+    backgroundColor: '#0074FF',
+    color: 'white',
+    padding: 15,
+    textAlign: 'center',
+    borderRadius: 15,
+    marginTop: 25,
+    fontSize: 18,
+    fontWeight: 'bold',
+    width: '50%',
+    marginLeft: '20%',
+  },
 });
 
 const loginStyles = StyleSheet.create({
@@ -117,6 +136,8 @@ const loginStyles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 15,
     fontSize: 18,
+    borderColor: '#000',
+    backgroundColor: '#fff',
   },
   header: {
     width: 1000,
@@ -161,9 +182,9 @@ const loginStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 80,
+    marginBottom: 0,
     marginTop: 0,
     color: 'darkgreen',
   },
@@ -196,7 +217,7 @@ const loginStyles = StyleSheet.create({
   },
   con_button: {
     color: 'darkgreen',
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
