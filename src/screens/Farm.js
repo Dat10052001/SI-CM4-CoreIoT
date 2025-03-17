@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Modal, 
-  TextInput, TouchableOpacity, Alert, KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Platform,
-  Keyboard,  } from 'react-native';
-import { Card, Button } from '@rneui/themed';
+import { View, Text, StyleSheet, ScrollView, Modal, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, TouchableWithoutFeedback, Platform, Keyboard } from 'react-native';
+import { Button } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import FarmCard from './FarmCard';
 
 const initialFarms = {
   farm1: {
@@ -15,42 +12,16 @@ const initialFarms = {
     plant: 'Paddy',
     status: 'Active',
   },
-  farm2: {
-    name: 'nong trai dong cua',
-    ID: 'SI002',
-    address: 'ABC Street',
-    plant: 'Paddy',
-    status: 'Inactive',
-  },
+  // farm2: {
+  //   name: 'nong trai dong cua',
+  //   ID: 'SI002',
+  //   address: 'ABC Street',
+  //   plant: 'Paddy',
+  //   status: 'Inactive',
+  // },
 };
 
-const FarmCard = ({ ID, title, address, plant, status, onDelete }) => {
-  return (
-    <Card containerStyle={styles.card}>
-      <Card.Title style={styles.cardTitle}>{title}</Card.Title>
-      <Card.Divider />
-      <View style={styles.user}>
-        <Text style={styles.label}>ID: <Text style={styles.name}>{ID}</Text></Text>
-        <Text style={styles.label}>ADDRESS: <Text style={styles.name}>{address}</Text></Text>
-        <Text style={styles.label}>PLANT: <Text style={styles.name}>{plant}</Text></Text>
-        <Text style={styles.label}>STATUS: <Text style={[styles.name, status === 'Active' ? styles.active : styles.inactive]}>{status}</Text></Text>
-      </View>
-      <View style={styles.buttonRow}>
-        <Button
-          buttonStyle={styles.view_button}
-          title="VIEW"
-        />
-        <Button
-          buttonStyle={styles.delete_button}
-          title="DELETE"
-          onPress={onDelete}
-        />
-      </View>
-    </Card>
-  );
-};
-
-const Farms = props => {
+const Farms = ({ navigation }) => {
   const [farms, setFarms] = useState(initialFarms);
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
@@ -112,6 +83,7 @@ const Farms = props => {
               address={farms[key].address}
               plant={farms[key].plant}
               status={farms[key].status}
+              onView={() => navigation.navigate('Farm Content', { farm: farms[key] })}
               onDelete={() => handleDeleteFarm(key)}
             />
           </View>
@@ -150,7 +122,6 @@ const Farms = props => {
               placeholder="Address"
               value={newFarm.title}
               onChangeText={(text) => setNewFarm({ ...newFarm, name: text })}
-
             />
             <Text style={styles.label_create}>Address</Text>
             <TextInput
@@ -223,49 +194,11 @@ const styles = StyleSheet.create({
     width: '80%',
     padding: 10,
   },
-  card: {
-    borderRadius: 15,
-    padding: 20,
-    backgroundColor: '#fff',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  cardTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  user: {
-    marginVertical: 10,
-  },
-  label: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: 'normal',
-  },
-  active: {
-    color: 'green',
-    fontWeight: 'bold',
-  },
-  inactive: {
-    color: 'red',
-    fontWeight: 'bold',
-  },
-  view_button: {
-    width: '85%',
-    backgroundColor: '#059033',
-    borderRadius: 10,
-  },
-  delete_button: {
-    width: '80%',
-    backgroundColor: 'red',
-    borderRadius: 10,
+  buttonRow1: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '100%',
+    marginTop: 20,
   },
   create_btn: {
     backgroundColor: '#0074FF',
@@ -313,18 +246,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 15,
     marginBottom: 5,
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    marginTop: 10
-  },
-  buttonRow1: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginTop: 20
   },
   modalButton: {
     backgroundColor: '#0074FF',

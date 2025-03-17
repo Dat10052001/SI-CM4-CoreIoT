@@ -7,6 +7,8 @@ import Start from './src/screens/Start';
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
 import SignUp from './src/screens/SignUp';
+import Farms from './src/screens/Farm';
+import FarmContent from './src/screens/FarmContent';
 import 'react-native-reanimated';
 
 const App = () => {
@@ -57,6 +59,8 @@ const App = () => {
           {/* <Stack.Screen name="LOGIN" component={Login} /> */}
           {/* <Stack.Screen name="SIGN UP, RESET PASSWORD" component={SignUp} /> */}
           <Stack.Screen name="HOME" component={Home} options={{ headerLeft: null }} />
+          <Stack.Screen name="Farms" component={Farms} />
+          <Stack.Screen name="Farm Content" component={FarmContent} />
         </Stack.Navigator>
       </NavigationContainer>
       <Modal
