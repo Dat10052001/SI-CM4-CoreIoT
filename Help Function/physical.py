@@ -91,10 +91,10 @@ def readMoisture():
     client.publish(AIO_FEED_ID[0],serial_read_data(ser))
     return serial_read_data(ser)
 
-##Adafruit
-AIO_FEED_ID = ["moisture", "temp", "relay-1","relay-2"]
-AIO_USERNAME = "Thesis_SmartAgri"
-AIO_KEY = "aio_HQLV330frfpmBwzKI76YlI0Z1DYh"
+# ##Adafruit
+# AIO_FEED_ID = ["moisture", "temp", "relay-1","relay-2"]
+# AIO_USERNAME = "Thesis_SmartAgri"
+# AIO_KEY = "aio_HQLV330frfpmBwzKI76YlI0Z1DYh"
 
 # THUC HIEN HANH CHUC NANG
 
