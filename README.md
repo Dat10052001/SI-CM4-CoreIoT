@@ -1,7 +1,7 @@
 # 🌱 Ứng Dụng Tưới Tiêu Thông Minh
 
 ## Giới Thiệu
-Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh sử dụng nền tảng CoreIOT kết hợp với mạch nhúng CM4 Raspberry PI. Hệ thống giúp tự động hóa quá trình tưới cây, tiết kiệm nước và tăng cường hiệu quả sản xuất nông nghiệp. 💧
+Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh sử dụng nền tảng CoreIOT kết hợp với mạch nhúng CM4 Raspberry PI. Hệ thống giúp tự động hóa quá trình tưới cây, tiết kiệm nước và tăng cường hiệu quả sản xuất nông nghiệp. 🌿💧
 
 ## Tính Năng
 - **Giám sát độ ẩm đất**: Sử dụng cảm biến để theo dõi độ ẩm của đất. 🌾
@@ -43,9 +43,6 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
 ## Sử Dụng
 Truy cập vào địa chỉ IP của Raspberry Pi trên trình duyệt để mở giao diện người dùng. 🌍
 Theo dõi độ ẩm và điều chỉnh cài đặt tưới tiêu theo nhu cầu. ⚙️
-
-## Giấy Phép
-Dự án này được cấp phép theo Giấy phép MIT. Vui lòng xem file LICENSE để biết thêm chi tiết. 📜
 
 ## Liên Hệ
 Nếu có bất kỳ câu hỏi nào, bạn có thể liên hệ qua email: example@example.com 📬
