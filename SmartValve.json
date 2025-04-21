@@ -1,0 +1,24 @@
+{
+  "SI Smart Valve 1": {
+    "index": 0,
+    "name": "SI Smart Valve 1",
+    "client_id": "b10dc661-1d29-11f0-b943-e12b9c63441a",
+    "access_token": "muko9m5bkwhxc4s50uv4",
+    "enable_telemetry": true,
+    "state": "OFF",
+    "config": {
+      "battery": 90
+    }
+  },
+  "SI Smart Valve 2": {
+    "index": 4,
+    "name": "SI Smart Valve 2",
+    "client_id": "b1195f20-1d29-11f0-b943-e12b9c63441a",
+    "access_token": "exqzsxbj5yyvDyaTcJ9w",
+    "enable_telemetry": true,
+    "state": "OFF",
+    "config": {
+      "battery": 88
+    }
+  }
+}

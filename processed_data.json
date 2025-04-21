@@ -1,0 +1,50 @@
+{
+  "SI Soil Moisture 1": {
+    "index": 0,
+    "name": "SI Soil Moisture 1",
+    "value": 46.95,
+    "battery": 90
+  },
+  "SI Soil Moisture 2": {
+    "index": 1,
+    "name": "SI Soil Moisture 2",
+    "value": 47.55,
+    "battery": 90
+  },
+  "SI Soil Moisture 3": {
+    "index": 2,
+    "name": "SI Soil Moisture 3",
+    "value": 40.95,
+    "battery": 90
+  },
+  "SI Soil Moisture 4": {
+    "index": 3,
+    "name": "SI Soil Moisture 4",
+    "value": 48.01,
+    "battery": 90
+  },
+  "SI Soil Moisture 5": {
+    "index": 4,
+    "name": "SI Soil Moisture 5",
+    "value": 47.9,
+    "battery": 90
+  },
+  "SI Soil Moisture 6": {
+    "index": 5,
+    "name": "SI Soil Moisture 6",
+    "value": 41.85,
+    "battery": 90
+  },
+  "SI Soil Moisture 7": {
+    "index": 6,
+    "name": "SI Soil Moisture 7",
+    "value": 45.9,
+    "battery": 90
+  },
+  "SI Soil Moisture 8": {
+    "index": 7,
+    "name": "SI Soil Moisture 8",
+    "value": 48.04,
+    "battery": 90
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "SI Water Meter 1": {
+    "index": 0,
+    "name": "SI Water Meter 1",
+    "access_token": "z64mz1tuchwlimb96zcy",
+    "client_id": "b10b7c70-1d29-11f0-b943-e12b9c63441a",
+    "enable_telemetry": true,
+    "state": null,
+    "increment": 1,
+    "config": {
+      "battery": 90,
+      "pulseCounter": 674
+    }
+  },
+  "SI Water Meter 2": {
+    "index": 4,
+    "name": "SI Water Meter 2",
+    "access_token": "Sa4dj3tHTr8GmkggKd8G",
+    "client_id": "b117d880-1d29-11f0-b943-e12b9c63441a",
+    "enable_telemetry": true,
+    "state": null,
+    "increment": 1,
+    "config": {
+      "battery": 88,
+      "pulseCounter": 537
+    }
+  }
+}
