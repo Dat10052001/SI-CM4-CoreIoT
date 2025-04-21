@@ -27,3 +27,20 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
    ```bash
    pip install gpiozero requests flask
    ```
+3. Clone repository về máy:
+   ```bash
+   git clone https://github.com/username/repo.git
+   ```
+4. Chạy ứng dụng:
+   ```bash
+   python app.py
+   ```
+## Sử Dụng
+Truy cập vào địa chỉ IP của Raspberry Pi trên trình duyệt để mở giao diện người dùng. 🌍
+Theo dõi độ ẩm và điều chỉnh cài đặt tưới tiêu theo nhu cầu. ⚙️
+
+## Giấy Phép
+Dự án này được cấp phép theo Giấy phép MIT. Vui lòng xem file LICENSE để biết thêm chi tiết. 📜
+
+## Liên Hệ
+Nếu có bất kỳ câu hỏi nào, bạn có thể liên hệ qua email: example@example.com 📬
