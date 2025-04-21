@@ -1,0 +1,210 @@
+devices = [
+    {
+        "index": 0,
+        "name": "SI Soil Moisture 1",
+        "client_id": "b10fc230-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "v5d2wnkzge9dp7szzqt0",
+        "config": {
+            "battery": 90,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        },
+    },
+    {
+        "index": 1,
+        "name": "SI Soil Moisture 2",
+        "client_id": "b111be00-1d29-11f0-b943-e12b9c63441a",
+        "access_token": "0mwifzrncms7z910f4h9",
+        "enable_telemetry": True,
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.2, "humidity": 0.05, "co": 1.2,
+                "co2": 1.0, "so2": 0.9, "no2": 1.1,
+                "pm2_5": 1.0, "o3": 0.95, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 1, "humidity": 1, "co": 2,
+                "co2": 1, "so2": 1, "no2": 1,
+                "pm2_5": 2, "o3": 2, "pm10": 1, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 2,
+        "name": "SI Soil Moisture 3",
+        "client_id": "b1142f00-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "rEEAbse6HVCEUP4ut6Sz",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 3,
+        "name": "SI Soil Moisture 4",
+        "client_id": "b11603c0-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "4sl6MRa4QLVLYs7NVql5",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 4,
+        "name": "SI Soil Moisture 5",
+        "client_id": "b11b5af1-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "ezZyxKXicUoUCq9Cg4RK",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 5,
+        "name": "SI Soil Moisture 6",
+        "client_id": "b11d2fb0-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "P50kAcgDNznl8mEfjT8v",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 6,
+        "name": "SI Soil Moisture 7",
+        "client_id": "b11f0470-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "0Ro2NIvRldbO5nEdyPm6",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 7,
+        "name": "SI Soil Moisture 8",
+        "client_id": "b1208b10-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "access_token": "9trqUESiFX7m5J9fw1ub",
+        "config": {
+            "battery": 90 ,
+            "calibrate": {
+                "temperature": 0.1, "humidity": 0.1, "co": 1.0,
+                "co2": 0.8, "so2": 1.0, "no2": 1.0,
+                "pm2_5": 1.0, "o3": 1.0, "pm10": 1.0, "pm10": 0, "moisture": 50
+            },
+            "accuracy": {
+                "temperature": 0, "humidity": 2, "co": 1,
+                "co2": 2, "so2": 0, "no2": 0,
+                "pm2_5": 1, "o3": 1, "pm10": 0, "pm10": 0, "moisture": 2
+            }
+        }
+    },
+    {
+        "index": 8,
+        "name": "SI Smart Valve 1",
+        "client_id": "b10dc661-1d29-11f0-b943-e12b9c63441a",
+        "access_token": "muko9m5bkwhxc4s50uv4",
+        "enable_telemetry": True,
+        "state": "OFF",
+        "config": {
+            "battery": 90
+        }
+    },
+        {
+        "index": 9,
+        "name": "SI Smart Valve 2",
+        "client_id": "b1195f20-1d29-11f0-b943-e12b9c63441a",
+        "access_token": "exqzsxbj5yyvDyaTcJ9w",
+        "enable_telemetry": True,
+        "state": "OFF",
+        "config": {
+            "battery": 90
+        }
+    },
+    {
+        "index": 10,
+        "name": "SI Water Meter 1",
+        "access_token": "z64mz1tuchwlimb96zcy",
+        "client_id": "b10b7c70-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "state": None,
+        "increment": 1,
+        "config": {
+            "battery": 90,
+            "pulseCounter": 0
+        }
+    },
+    {
+        "index": 11,
+        "name": "SI Water Meter 2",
+        "access_token": "Sa4dj3tHTr8GmkggKd8G",
+        "client_id": "b117d880-1d29-11f0-b943-e12b9c63441a",
+        "enable_telemetry": True,
+        "state": None,
+        "increment": 1,
+        "config": {
+            "battery": 90,
+            "pulseCounter": 0
+        }
+    },
+]
