@@ -14,7 +14,7 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
 - **CoreIOT**: Nền tảng IoT để quản lý thiết bị và dữ liệu. 🌐
 - **Cảm biến độ ẩm**: Để đo độ ẩm của đất. 🌡️
 - **Van điện từ**: Để điều khiển quá trình tưới tiêu. 🚰
-- **Đồng hồ nước**: Đo lượng nước tới được trong ngày. 📈
+- **Đồng hồ nước**: Đo lượng nước đã tưới tiêu được trong ngày. 📈
 
 ## Cài Đặt
 ### Yêu Cầu Hệ Thống
