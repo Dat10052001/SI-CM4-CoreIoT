@@ -9,7 +9,7 @@
     "increment": 1,
     "config": {
       "battery": 90,
-      "pulseCounter": 674
+      "pulseCounter": 526
     }
   },
   "SI Water Meter 2": {
@@ -22,7 +22,7 @@
     "increment": 1,
     "config": {
       "battery": 88,
-      "pulseCounter": 537
+      "pulseCounter": 355
     }
   }
 }

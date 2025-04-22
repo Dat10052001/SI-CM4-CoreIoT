@@ -1,7 +1,6 @@
 import threading
 import requests
 import json
-import random
 import os
 from datetime import datetime
 from threading import Event
@@ -16,8 +15,15 @@ DATA_FILE = os.path.join(BASE_DIR, "processed_data.json")
 time_to_sent = 10
 
 def log(name, message):
-    timestamp = datetime.now().strftime("%H:%M:%S")
-    print(f"[{timestamp}] [{name}] {message}", flush=True)
+    timestamp = datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
+    log_message = f"[{timestamp}] [{name}] [{message}]"
+    print(log_message, flush=True)  # Vẫn in ra màn hình
+    try:
+        # Ghi log vào file log.txt
+        with open("log.txt", "a", encoding="utf-8") as log_file:
+            log_file.write(log_message + "\n")
+    except Exception as e:
+        print(f"❌ Failed to write log to file: {e}", flush=True)
 
 def load_device_file(file_path):
     try:
@@ -37,7 +43,7 @@ def save_device_file(file_path, data):
         log("system", f"❌ Failed to save file {file_path} {e}")
 
 def format_data(data):
-    return "(" + ", ".join(f"{k} = {v}" for k, v in data.items()) + ")"
+    return "[" + ", ".join(f"{k} = {v}" for k, v in data.items()) + "]"
 
 def send_telemetry(api_base, headers, name, data):
     try:
@@ -68,8 +74,10 @@ def listen_rpc_valve(device):
     api_base = f"{HOST}/api/v1/{access_token}"
     headers = {"Content-Type": "application/json"}
     url = f"{api_base}/rpc?timeout=60000"
-    state_data = load_device_file(SMARTVALVE_FILE)
-    state_data[name] = device
+    wait_event = Event()  # Tạo một Event để chờ
+
+    log(name, "📞 Listening RPC...")
+
     while True:
         try:
             r = requests.get(url, timeout=65)
@@ -77,19 +85,34 @@ def listen_rpc_valve(device):
                 rpc = r.json()
                 method = rpc.get("method")
                 params = rpc.get("params")
-                methodText = "TURN ON" if method == "TURN_ON" else "TURN OFF"
-                paramsText = "Params: {params}" if params else "No Params"
+                methodText = "Turned On" if method == "TURN_ON" else "Turned Off"
+                paramsText = f"Params: {params}" if params else "No Params"
                 log(name, f"⬇️  RPC received → {methodText} & {paramsText}")
+
                 if method == "TURN_ON":
                     device["state"] = "ON"
                 elif method == "TURN_OFF":
                     device["state"] = "OFF"
-                send_attributes(api_base, headers, name, {"state": device["state"]})
+
+                # Tải file hiện tại
+                state_data = load_device_file(SMARTVALVE_FILE)
+
+                # Cập nhật đúng valve theo tên
+                if name == "SI Smart Valve 1":
+                    state_data["SI Smart Valve 1"] = device
+                elif name == "SI Smart Valve 2":
+                    state_data["SI Smart Valve 2"] = device
+
+                # Ghi lại file
                 save_device_file(SMARTVALVE_FILE, state_data)
+
+                send_attributes(api_base, headers, name, {"state": device["state"]})
             elif r.status_code == 408:
                 log(name, "⏳ RPC timeout")
         except Exception as e:
             log(name, f"❌ RPC error: {e}")
+        wait_event.wait(0.5)
+        
 
 def run_water_meter(device):
     """Lắng nghe SI Water Meter và tải dữ liệu"""
@@ -110,12 +133,14 @@ def run_water_meter(device):
         # Đọc trạng thái valve từ file JSON
         water_meter_devices = load_device_file(WATERMETER_FILE)
         smart_valve_devices = load_device_file(SMARTVALVE_FILE)
+        is_water_meter_1 = (name == "SI Water Meter 1")
+        is_water_meter_2 = (name == "SI Water Meter 2")
         valve_state1 = smart_valve_devices.get("SI Smart Valve 1").get("state", "OFF")
         valve_state2 = smart_valve_devices.get("SI Smart Valve 2").get("state", "OFF")
 
-        if valve_state1 == "ON":
+        if is_water_meter_1 and valve_state1 == "ON":
             # Nếu valve_state == "ON", tải cả "battery" và "pulseCounter" mỗi 1s
-            pulse_counter1 = water_meter_devices.get("SI Water Meter 1").get("config", {}).get("pulseCounter", 0)
+            pulse_counter1 = water_meter_devices["SI Water Meter 1"]["config"]["pulseCounter"]
             pulse_counter1 += increment
             water_meter_devices["SI Water Meter 1"]["config"]["pulseCounter"] = pulse_counter1
             save_device_file(WATERMETER_FILE, water_meter_devices)
@@ -124,11 +149,10 @@ def run_water_meter(device):
                 "pulseCounter": pulse_counter1,
             }
             send_telemetry(api_base, headers, name, telemetry)
-            wait_event.wait(0.5)  # Chờ 1 giây mà không chặn chương trình
 
-        if valve_state2 == "ON":
+        if is_water_meter_2 and valve_state2 == "ON":
             # Nếu valve_state == "ON", tải cả "battery" và "pulseCounter" mỗi 1s
-            pulse_counter2 = water_meter_devices.get("SI Water Meter 2").get("config", {}).get("pulseCounter", 0)
+            pulse_counter2 = water_meter_devices["SI Water Meter 2"]["config"]["pulseCounter"]
             pulse_counter2 += increment
             water_meter_devices["SI Water Meter 2"]["config"]["pulseCounter"] = pulse_counter2
             save_device_file(WATERMETER_FILE, water_meter_devices)
@@ -137,14 +161,14 @@ def run_water_meter(device):
                 "pulseCounter": pulse_counter2,
             }
             send_telemetry(api_base, headers, name, telemetry)
-            wait_event.wait(0.5)  # Chờ 1 giây mà không chặn chương trình
 
         if valve_state1 == "OFF" and valve_state2 == "OFF":
             # Nếu valve_state != "ON", chỉ tải "battery" mỗi 5s
             telemetry = {"battery": config.get("battery", 0)}
             send_telemetry(api_base, headers, name, telemetry)
-            wait_event.wait(time_to_sent - 0.5)  # Chờ 5 giây mà không chặn chương trình
-        wait_event.wait(0.5) 
+            wait_event.wait(time_to_sent - 1)
+  # Chờ 5 giây mà không chặn chương trình
+        wait_event.wait(0.5)
 
 def run_other_device(device):
     """Lắng nghe các thiết bị khác và giữ logic như cũ"""
@@ -195,7 +219,7 @@ def main():
     water_meter = load_device_file(WATERMETER_FILE)
 
     # Combine all devices into a single list
-    devices = list(soil_moisture.values()) + list(smart_valve.values()) + list(water_meter.values())
+    devices = list(smart_valve.values()) + list(water_meter.values()) + list(soil_moisture.values())
 
     if not devices:
         log("system", "❌ No devices found in the JSON files")

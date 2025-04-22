@@ -32,11 +32,15 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
    ```bash
    git clone https://github.com/Dat10052001/SmartIrrgationApp.git
    ```
-4. Chạy ứng dụng:
+4. Cài đặt các thư viện có trong dự án
+   ```
+   pip install -r requirements.txt
+   ```
+5. Chạy ứng dụng:
    ```bash
    python3 thingboard.py
    ```
-5. Chạy giao diện:
+6. Chạy giao diện:
    ```bash
    python3 device_UI.py
    ```
