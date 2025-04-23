@@ -3,6 +3,7 @@ import customtkinter as ctk
 from datetime import datetime
 from PIL import Image, ImageTk
 from customtkinter import CTkImage
+import os
 
 timestamp = datetime.now().strftime(" %d/%m/%Y  %H:%M:%S")
 # Define fields based on indices
@@ -10,9 +11,10 @@ FIELD1_INDICES = {0, 1, 2, 3}  # Field1: Wheat
 FIELD2_INDICES = {4, 5, 6, 7}  # Field2: Corn
 
 # File paths
-PROCESSED_DATA_FILE = "processed_data.json"
-SMARTVALVE_FILE = "SmartValve.json"
-WATERMETER_FILE = "WaterMeter.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SMARTVALVE_FILE = os.path.join(BASE_DIR, "../JSONdata/SmartValve.json")
+WATERMETER_FILE = os.path.join(BASE_DIR, "../JSONdata/WaterMeter.json")
+PROCESSED_DATA_FILE = os.path.join(BASE_DIR, "../JSONdata/processed_data.json")
 
 # Font settings
 TITLE_FONT = ("Segoe UI", 35, "bold")
