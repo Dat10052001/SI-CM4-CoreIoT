@@ -38,11 +38,8 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
    ```
 5. Chạy ứng dụng:
    ```bash
-   python3 thingboard.py
-   ```
-6. Chạy giao diện:
-   ```bash
-   python3 device_UI.py
+   python3 main.py
+   ``
    ```
 ## Sử Dụng
 Truy cập vào địa chỉ IP của Raspberry Pi trên trình duyệt để mở giao diện người dùng. 🌍
