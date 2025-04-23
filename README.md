@@ -20,7 +20,6 @@ Dự án này nhằm phát triển một hệ thống tưới tiêu thông minh 
 ### Yêu Cầu Hệ Thống
 - Raspberry Pi CM4
 - Python 3.x 
-- Thư viện cần thiết: `gpiozero`, `requests`, `flask`
 
 ### Hướng Dẫn Cài Đặt
 1. Cài đặt hệ điều hành cho Raspberry Pi. 🛠️
