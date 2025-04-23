@@ -8,8 +8,8 @@
     "state": null,
     "increment": 1,
     "config": {
-      "battery": 90,
-      "pulseCounter": 526
+      "battery": 31,
+      "pulseCounter": 0
     }
   },
   "SI Water Meter 2": {
@@ -21,8 +21,8 @@
     "state": null,
     "increment": 1,
     "config": {
-      "battery": 88,
-      "pulseCounter": 355
+      "battery": 57,
+      "pulseCounter": 0
     }
   }
 }

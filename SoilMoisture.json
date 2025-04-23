@@ -7,7 +7,7 @@
     "value": 45,
     "access_token": "v5d2wnkzge9dp7szzqt0",
     "config": {
-      "battery": 90,
+      "battery": 64,
       "calibrate": {
         "moisture": 50
       },
@@ -24,7 +24,7 @@
     "enable_telemetry": true,
     "value": 45,
     "config": {
-      "battery": 90,
+      "battery": 64,
       "calibrate": {
         "moisture": 50
       },
@@ -41,7 +41,7 @@
     "value": 45,
     "access_token": "rEEAbse6HVCEUP4ut6Sz",
     "config": {
-      "battery": 90,
+      "battery": 68,
       "calibrate": {
         "moisture": 50
       },
@@ -58,7 +58,7 @@
     "value": 45,
     "access_token": "4sl6MRa4QLVLYs7NVql5",
     "config": {
-      "battery": 90,
+      "battery": 97,
       "calibrate": {
         "moisture": 50
       },
@@ -75,7 +75,7 @@
     "value": 45,
     "access_token": "ezZyxKXicUoUCq9Cg4RK",
     "config": {
-      "battery": 90,
+      "battery": 34,
       "calibrate": {
         "moisture": 50
       },
@@ -109,7 +109,7 @@
     "value": 45,
     "access_token": "0Ro2NIvRldbO5nEdyPm6",
     "config": {
-      "battery": 90,
+      "battery": 86,
       "calibrate": {
         "moisture": 50
       },
@@ -126,7 +126,7 @@
     "value": 45,
     "access_token": "9trqUESiFX7m5J9fw1ub",
     "config": {
-      "battery": 90,
+      "battery": 56,
       "calibrate": {
         "moisture": 50
       },
