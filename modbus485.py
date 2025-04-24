@@ -11,16 +11,12 @@ class SerialCommunicate:
             None,
             [1, 5, 0, 0, 255, 0, 140, 58],
             [1, 5, 0, 1, 255, 0, 221, 250],
-            [1, 6, 0, 0, 0, 255, 201, 138],
-            [2, 6, 0, 0, 0, 255, 201, 185],
         ]
 
         self.relay_OFF = [
             None,
             [1, 5, 0, 0, 0, 0, 205, 202],
             [1, 5, 0, 1, 0, 0, 156, 10],
-            [1, 6, 0, 0, 0, 0, 137, 202],
-            [2, 6, 0, 0, 0, 0, 137, 249],
         ]
 
         try:
@@ -46,8 +42,8 @@ class SerialCommunicate:
     def run(self):
         """Chạy relay 1 mỗi 2 giây, relay 2 mỗi 3 giây song song"""
         try:
-            t1 = threading.Thread(target=self.toggle_relay(3, True))  
-            t2 = threading.Thread(target=self.toggle_relay(3, False)) # Relay 1 chạy
+            t1 = threading.Thread(target=self.toggle_relay(1, True))  
+            t2 = threading.Thread(target=self.toggle_relay(1, False)) # Relay 1 chạy
             t1.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
             t2.daemon = True
             t1.start()  # Khởi chạy luồng Relay 1
