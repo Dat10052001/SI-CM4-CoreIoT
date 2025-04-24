@@ -19,12 +19,12 @@ def log(name, message):
     timestamp = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
     log_message = f"[{timestamp}] [{name}] [{message}]"
     print(log_message, flush=True)
-    try:
-        # Ghi log vào file log.txt
-        with open(LOG_FILE, "a", encoding="utf-8") as log_file:
-            log_file.write(log_message + "\n")
-    except Exception as e:
-        print(f"❌ Failed to write log to file: {e}", flush=True)
+    # try:
+    #     # Ghi log vào file log.txt
+    #     with open(LOG_FILE, "a", encoding="utf-8") as log_file:
+    #         log_file.write(log_message + "\n")
+    # except Exception as e:
+    #     print(f"❌ Failed to write log to file: {e}", flush=True)
 
 # Định nghĩa hàm load_device_file và save_device_file
 def load_device_file(file_path):
