@@ -43,8 +43,8 @@ class SerialCommunicate:
         """Chạy relay 1 mỗi 2 giây, relay 2 mỗi 3 giây song song"""
         try:
             t1 = threading.Thread(target=self.toggle_relay(1, True))
-            t2 = threading.Thread(target=self.toggle_relay(1, False)) 
-            t3 = threading.Thread(target=self.toggle_relay(2, True))
+            t2 = threading.Thread(target=self.toggle_relay(2, True))
+            t3 = threading.Thread(target=self.toggle_relay(1, False)) 
             t4 = threading.Thread(target=self.toggle_relay(2, False))
             t1.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
             t2.daemon = True
