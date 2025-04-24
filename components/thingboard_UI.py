@@ -83,70 +83,70 @@ root.geometry(f"{width}x{height}+{x}+{y}")
 
 # Tải ảnh clock.png bằng CTkImage
 clock_image = CTkImage(
-    light_image=Image.open("image/clock.png"),
+    light_image=Image.open("../image/clock.png"),
     size=(40, 40)  # Resize ảnh về kích thước phù hợp
 )
 
 # Tải ảnh wheat.png và corn.png bằng CTkImage
 wheat_image = CTkImage(
-    light_image=Image.open("image/wheat.png"),
+    light_image=Image.open("../image/wheat.png"),
     size=(25, 30)  # Resize ảnh về kích thước phù hợp
 )
 
 corn_image = CTkImage(
-    light_image=Image.open("image/corn.png"),
+    light_image=Image.open("../image/corn.png"),
     size=(40, 40)  # Resize ảnh về kích thước phù hợp
 )
 
 # Tải các biểu tượng bằng CTkImage
 humid_image = CTkImage(
-    light_image=Image.open("image/humid.png"),
+    light_image=Image.open("../image/humid.png"),
     size=(20, 20)  # Resize ảnh về kích thước phù hợp
 )
 
 on_image = CTkImage(
-    light_image=Image.open("image/on.png"),
+    light_image=Image.open("../image/on.png"),
     size=(20, 20)
 )
 
 off_image = CTkImage(
-    light_image=Image.open("image/off.png"),
+    light_image=Image.open("../image/off.png"),
     size=(20, 20)
 )
 
 pulse_image = CTkImage(
-    light_image=Image.open("image/pulseCounter.png"),
+    light_image=Image.open("../image/pulseCounter.png"),
     size=(20, 20)
 )
 
 watermeter_image = CTkImage(
-    light_image=Image.open("image/watermeter.png"),
+    light_image=Image.open("../image/watermeter.png"),
     size=(30, 25)
 )
 
 valve_image = CTkImage(
-    light_image=Image.open("image/valve.png"),
+    light_image=Image.open("../image/valve.png"),
     size=(30, 25)
 )
 
 # Tải các ảnh pin bằng CTkImage
 battery_1_image = CTkImage(
-    light_image=Image.open("image/battery_1.png"),
+    light_image=Image.open("../image/battery_1.png"),
     size=(20, 25)  # Resize ảnh về kích thước phù hợp
 )
 
 battery_2_image = CTkImage(
-    light_image=Image.open("image/battery_2.png"),
+    light_image=Image.open("../image/battery_2.png"),
     size=(20, 25)
 )
 
 battery_3_image = CTkImage(
-    light_image=Image.open("image/battery_3.png"),
+    light_image=Image.open("../image/battery_3.png"),
     size=(20, 25)
 )
 
 battery_4_image = CTkImage(
-    light_image=Image.open("image/battery_4.png"),
+    light_image=Image.open("../image/battery_4.png"),
     size=(20, 25)
 )
 

@@ -16,7 +16,7 @@ time_to_sent = 10
 
 # Định nghĩa hàm log
 def log(name, message):
-    timestamp = datetime.now().strftime("%d/%m/%Y - %H:%M:%S")
+    timestamp = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
     log_message = f"[{timestamp}] [{name}] [{message}]"
     print(log_message, flush=True)
     try:
