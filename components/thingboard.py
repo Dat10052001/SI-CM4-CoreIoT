@@ -11,7 +11,7 @@ SOILMOISTURE_FILE = os.path.join(BASE_DIR, "../JSONdata/SoilMoisture.json")
 SMARTVALVE_FILE = os.path.join(BASE_DIR, "../JSONdata/SmartValve.json")
 WATERMETER_FILE = os.path.join(BASE_DIR, "../JSONdata/WaterMeter.json")
 DATA_FILE = os.path.join(BASE_DIR, "../JSONdata/processed_data.json")
-LOG_FILE = os.path.join(BASE_DIR, "../LogAndLibrary/log.txt")
+LOG_FILE = os.path.join(BASE_DIR, "../log.txt")
 time_to_sent = 10
 
 # Định nghĩa hàm log
