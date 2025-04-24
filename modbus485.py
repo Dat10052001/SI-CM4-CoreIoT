@@ -39,27 +39,19 @@ class SerialCommunicate:
         status = "ON" if state else "OFF"
         print(f"🔁 Relay {relay_number} {status}")
         self.send_relay_command(command)
-
-    def toggle_relay(self, number):
-        """Relay 1 toggle mỗi 2 giây"""
-        state = False
-        while True:
-            state = not state
-            self.toggle_relay(number, state)
-            time.sleep(2)
+        time.sleep(2)
 
     def run(self):
         """Chạy relay 1 mỗi 2 giây, relay 2 mỗi 3 giây song song"""
         try:
-            t1 = threading.Thread(target=self.toggle_relay(3))  # Relay 1 chạy
+            t1 = threading.Thread(target=self.toggle_relay(3, True))  
+            t2 = threading.Thread(target=self.toggle_relay(3, False)) # Relay 1 chạy
             t1.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
-            t2.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
-
+            t2.daemon = True
             t1.start()  # Khởi chạy luồng Relay 1
-            t2.start()  # Khởi chạy luồng Relay 2
-
+            t2.start()
             t1.join()  # Chờ Relay 1
-            t2.join()  # Chờ Relay 2
+            t2.join()
         except KeyboardInterrupt:
             print("🛑 Dừng chương trình.")
         finally:
