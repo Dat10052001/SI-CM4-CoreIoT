@@ -67,6 +67,39 @@ def load_devices():
 
     return devices
 
+# Hàm để tải tất cả hình ảnh
+def load_images():
+    image_dir = os.path.join(BASE_DIR, "../image")  # Thư mục chứa hình ảnh
+    return {
+        "clock": CTkImage(light_image=Image.open(os.path.join(image_dir, "clock.png")), size=(40, 40)),
+        "wheat": CTkImage(light_image=Image.open(os.path.join(image_dir, "wheat.png")), size=(25, 30)),
+        "corn": CTkImage(light_image=Image.open(os.path.join(image_dir, "corn.png")), size=(40, 40)),
+        "humid": CTkImage(light_image=Image.open(os.path.join(image_dir, "humid.png")), size=(20, 20)),
+        "on": CTkImage(light_image=Image.open(os.path.join(image_dir, "on.png")), size=(20, 20)),
+        "off": CTkImage(light_image=Image.open(os.path.join(image_dir, "off.png")), size=(20, 20)),
+        "pulse": CTkImage(light_image=Image.open(os.path.join(image_dir, "pulseCounter.png")), size=(20, 20)),
+        "watermeter": CTkImage(light_image=Image.open(os.path.join(image_dir, "watermeter.png")), size=(30, 25)),
+        "valve": CTkImage(light_image=Image.open(os.path.join(image_dir, "valve.png")), size=(30, 25)),
+        "battery_1": CTkImage(light_image=Image.open(os.path.join(image_dir, "battery_1.png")), size=(20, 25)),
+        "battery_2": CTkImage(light_image=Image.open(os.path.join(image_dir, "battery_2.png")), size=(20, 25)),
+        "battery_3": CTkImage(light_image=Image.open(os.path.join(image_dir, "battery_3.png")), size=(20, 25)),
+        "battery_4": CTkImage(light_image=Image.open(os.path.join(image_dir, "battery_4.png")), size=(20, 25)),
+    }
+
+# Tải tất cả hình ảnh
+images = load_images()
+
+# Hàm chọn ảnh pin dựa trên giá trị battery
+def get_battery_image(battery):
+    if battery <= 25:
+        return images["battery_1"]
+    elif battery <= 50:
+        return images["battery_2"]
+    elif battery <= 75:
+        return images["battery_3"]
+    else:
+        return images["battery_4"]
+
 # Initialize the UI
 ctk.set_appearance_mode("light")
 ctk.set_default_color_theme("blue")
@@ -91,93 +124,13 @@ screen_height = root.winfo_screenheight()
 width = int(screen_width * 0.8)  # 80% chiều rộng màn hình
 height = int(screen_height * 0.8)  # 80% chiều cao màn hình
 
-# Tải ảnh clock.png bằng CTkImage
-clock_image = CTkImage(
-    light_image=Image.open("../image/clock.png"),
-    size=(40, 40)  # Resize ảnh về kích thước phù hợp
-)
-
-# Tải ảnh wheat.png và corn.png bằng CTkImage
-wheat_image = CTkImage(
-    light_image=Image.open("../image/wheat.png"),
-    size=(25, 30)  # Resize ảnh về kích thước phù hợp
-)
-
-corn_image = CTkImage(
-    light_image=Image.open("../image/corn.png"),
-    size=(40, 40)  # Resize ảnh về kích thước phù hợp
-)
-
-# Tải các biểu tượng bằng CTkImage
-humid_image = CTkImage(
-    light_image=Image.open("../image/humid.png"),
-    size=(20, 20)  # Resize ảnh về kích thước phù hợp
-)
-
-on_image = CTkImage(
-    light_image=Image.open("../image/on.png"),
-    size=(20, 20)
-)
-
-off_image = CTkImage(
-    light_image=Image.open("../image/off.png"),
-    size=(20, 20)
-)
-
-pulse_image = CTkImage(
-    light_image=Image.open("../image/pulseCounter.png"),
-    size=(20, 20)
-)
-
-watermeter_image = CTkImage(
-    light_image=Image.open("../image/watermeter.png"),
-    size=(30, 25)
-)
-
-valve_image = CTkImage(
-    light_image=Image.open("../image/valve.png"),
-    size=(30, 25)
-)
-
-# Tải các ảnh pin bằng CTkImage
-battery_1_image = CTkImage(
-    light_image=Image.open("../image/battery_1.png"),
-    size=(20, 25)  # Resize ảnh về kích thước phù hợp
-)
-
-battery_2_image = CTkImage(
-    light_image=Image.open("../image/battery_2.png"),
-    size=(20, 25)
-)
-
-battery_3_image = CTkImage(
-    light_image=Image.open("../image/battery_3.png"),
-    size=(20, 25)
-)
-
-battery_4_image = CTkImage(
-    light_image=Image.open("../image/battery_4.png"),
-    size=(20, 25)
-)
-
-# Hàm chọn ảnh pin dựa trên giá trị battery
-def get_battery_image(battery):
-    if battery <= 25:
-        return battery_1_image
-    elif battery <= 50:
-        return battery_2_image
-    elif battery <= 75:
-        return battery_3_image
-    else:
-        return battery_4_image
-
 # Đặt timestamp_label ở đầu giao diện với ảnh clock
 timestamp_label = ctk.CTkLabel(
     root,
     text=timestamp,
     font=("Segoe UI", 25),
     text_color="#333333",
-    image=clock_image,  # Thêm ảnh vào label
+    image=images["clock"],  # Sử dụng hình ảnh từ dictionary
     compound="left"  # Hiển thị ảnh bên trái văn bản
 )
 timestamp_label.grid(row=0, column=0, columnspan=2, pady=10, sticky="n")  # Đặt ở hàng đầu tiên, chiếm 2 cột
@@ -202,7 +155,7 @@ ctk.CTkLabel(
     text="Field 1 - Wheat ",
     font=SECTION_TITLE_FONT,
     text_color="#00ff7f",
-    image=wheat_image,  # Thêm ảnh wheat
+    image=images["wheat"],  # Sử dụng hình ảnh từ dictionary
     compound="right"  # Hiển thị ảnh bên trái văn bản
 ).pack(anchor="w", padx=20, pady=(15, 10))
 
@@ -214,7 +167,7 @@ ctk.CTkLabel(
     text="Field 2 - Corn ",
     font=SECTION_TITLE_FONT,
     text_color="#005580",
-    image=corn_image,  # Thêm ảnh corn
+    image=images["corn"],  # Sử dụng hình ảnh từ dictionary
     compound="right"  # Hiển thị ảnh bên trái văn bản
 ).pack(anchor="w", padx=20, pady=(15, 10))
 
@@ -267,13 +220,13 @@ def update_ui():
             device_container = ctk.CTkFrame(parent_frame, fg_color="#f0f8ff", corner_radius=15)
             if device_name.startswith("SI Water Meter"):
                 device_container.pack(fill="x", pady=(8, 20), padx=20)
-                icon_image = watermeter_image
+                icon_image = images["watermeter"]
             elif device_name.startswith("SI Smart Valve"):
                 device_container.pack(fill="x", pady=(8, 20), padx=20)
-                icon_image = valve_image
+                icon_image = images["valve"]
             else:
                 device_container.pack(fill="x", pady=8, padx=20)
-                icon_image = valve_image
+                icon_image = images["valve"]
             device_containers[device_name] = device_container
 
             # Thêm tên thiết bị với biểu tượng
@@ -296,7 +249,7 @@ def update_ui():
         # Cập nhật các giá trị state, value, battery, pulseCounter
         if state is not None:
             state_label = "ON" if state == "ON" else "OFF"
-            state_image = on_image if state == "ON" else off_image
+            state_image = images["on"] if state == "ON" else images["off"]
             ctk.CTkLabel(
                 device_container,
                 text=f" Status: {state_label}",
@@ -311,7 +264,7 @@ def update_ui():
                 device_container,
                 text=f" Moisture: {value}%",
                 font=DEVICE_VALUE_FONT,
-                image=humid_image,
+                image=images["humid"],
                 compound="left"
             ).pack(anchor="w", padx=12)
 
@@ -320,7 +273,7 @@ def update_ui():
                 device_container,
                 text=f" Total Today: {pulse_counter} ml",
                 font=DEVICE_VALUE_FONT,
-                image=pulse_image,
+                image=images["pulse"],
                 compound="left"
             ).pack(anchor="w", padx=12)
 
