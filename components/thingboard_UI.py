@@ -83,6 +83,14 @@ def exit_fullscreen(event):
 
 root.bind("<Escape>", exit_fullscreen)
 
+# Lấy kích thước màn hình
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+# Tính toán width và height dựa trên tỷ lệ
+width = int(screen_width * 0.8)  # 80% chiều rộng màn hình
+height = int(screen_height * 0.8)  # 80% chiều cao màn hình
+
 # Tải ảnh clock.png bằng CTkImage
 clock_image = CTkImage(
     light_image=Image.open("../image/clock.png"),
