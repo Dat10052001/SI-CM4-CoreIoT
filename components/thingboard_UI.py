@@ -73,13 +73,15 @@ ctk.set_default_color_theme("blue")
 
 root = ctk.CTk()
 root.title("IRRIGATION MONITORING SYSTEM")
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
-width = int(screen_width * 0.6)
-height = int(screen_height * 0.85)
-x = (screen_width - width) // 2
-y = (screen_height - height) // 2
-root.geometry(f"{width}x{height}+{x}+{y}")
+
+# Set full screen mode
+root.attributes("-fullscreen", True)
+
+# Thêm phím tắt để thoát chế độ toàn màn hình
+def exit_fullscreen(event):
+    root.attributes("-fullscreen", False)
+
+root.bind("<Escape>", exit_fullscreen)
 
 # Tải ảnh clock.png bằng CTkImage
 clock_image = CTkImage(
