@@ -42,14 +42,22 @@ class SerialCommunicate:
     def run(self):
         """Chạy relay 1 mỗi 2 giây, relay 2 mỗi 3 giây song song"""
         try:
-            t1 = threading.Thread(target=self.toggle_relay(1, True))  
-            t2 = threading.Thread(target=self.toggle_relay(1, False)) # Relay 1 chạy
+            t1 = threading.Thread(target=self.toggle_relay(1, True))
+            t2 = threading.Thread(target=self.toggle_relay(1, False)) 
+            t3 = threading.Thread(target=self.toggle_relay(2, True))
+            t4 = threading.Thread(target=self.toggle_relay(2, False))
             t1.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
             t2.daemon = True
+            t3.daemon = True  # Đảm bảo các luồng sẽ dừng khi chương trình dừng
+            t4.daemon = True
             t1.start()  # Khởi chạy luồng Relay 1
             t2.start()
+            t3.start()  # Khởi chạy luồng Relay 1
+            t4.start()
             t1.join()  # Chờ Relay 1
             t2.join()
+            t3.join()  # Chờ Relay 1
+            t4.join()
         except KeyboardInterrupt:
             print("🛑 Dừng chương trình.")
         finally:
