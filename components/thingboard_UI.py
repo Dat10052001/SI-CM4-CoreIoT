@@ -271,7 +271,7 @@ def update_ui():
         if pulse_counter is not None:
             ctk.CTkLabel(
                 device_container,
-                text=f" Total Today: {pulse_counter} ml",
+                text=f" Total Water Irrigated: {pulse_counter} ml",
                 font=DEVICE_VALUE_FONT,
                 image=images["pulse"],
                 compound="left"

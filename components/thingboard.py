@@ -4,6 +4,7 @@ import json
 import os
 from datetime import datetime
 from threading import Event
+from modbus485 import SerialCommunicate
 
 HOST = "https://app.coreiot.io"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,13 +19,13 @@ time_to_sent = 10
 def log(name, message):
     timestamp = datetime.now().strftime("%d/%m/%Y-%H:%M:%S")
     log_message = f"[{timestamp}] [{name}] [{message}]"
-    print(log_message, flush=True)
-    # try:
-    #     # Ghi log vào file log.txt
-    #     with open(LOG_FILE, "a", encoding="utf-8") as log_file:
-    #         log_file.write(log_message + "\n")
-    # except Exception as e:
-    #     print(f"❌ Failed to write log to file: {e}", flush=True)
+    # print(log_message, flush=True)
+    try:
+        # Ghi log vào file log.txt
+        with open(LOG_FILE, "a", encoding="utf-8") as log_file:
+            log_file.write(log_message + "\n")
+    except Exception as e:
+        print(f"Failed to write log to file: {e}", flush=True)
 
 # Định nghĩa hàm load_device_file và save_device_file
 def load_device_file(file_path):
@@ -34,7 +35,7 @@ def load_device_file(file_path):
                 return json.load(f)
         return {}
     except Exception as e:
-        log("system", f"❌ Failed to load file {file_path} {e}")
+        log("system", f"Failed to load file {file_path} {e}")
         return {}
 
 def save_device_file(file_path, data):
@@ -42,33 +43,33 @@ def save_device_file(file_path, data):
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     except Exception as e:
-        log("system", f"❌ Failed to save file {file_path} {e}")
+        log("system", f"Failed to save file {file_path} {e}")
 
 # Định nghĩa hàm format_data, send_telemetry và send_attributes
 def format_data(data):
-    return "(" + ", ".join(f"{k} = {v}" for k, v in data.items()) + ")"
+    return "(" + ", ".join(f"{v} -> {k}" for k, v in data.items()) + ")"
 
 def send_telemetry(api_base, headers, name, data):
     try:
         url = f"{api_base}/telemetry"
         r = requests.post(url, headers=headers, json=data)
         if r.status_code == 200:
-            log(name, f"🔺 Sent telemetry {format_data(data)}")
+            log(name, f"Sent telemetry {format_data(data)}")
         else:
-            log(name, f"⚠️ Telemetry error {r.status_code}: {r.text}")
+            log(name, f"Telemetry error {r.status_code}: {r.text}")
     except Exception as e:
-        log(name, f"❌ Telemetry exception {e}")
+        log(name, f"Telemetry exception {e}")
 
 def send_attributes(api_base, headers, name, data):
     try:
         url = f"{api_base}/attributes"
         r = requests.post(url, headers=headers, json=data)
         if r.status_code == 200:
-            log(name, f"🔺 Sent attributes {format_data(data)}")
+            log(name, f"Sent attributes {format_data(data)}")
         else:
-            log(name, f"⚠️ Attribute error {r.status_code}: {r.text}")
+            log(name, f"Attribute error {r.status_code}: {r.text}")
     except Exception as e:
-        log(name, f"❌ Attribute exception {e}")
+        log(name, f"Attribute exception {e}")
 
 # Định nghĩa hàm listen_rpc_valve (lắng nghe RPC cho van thông minh)
 def listen_rpc_valve(device):
@@ -79,7 +80,8 @@ def listen_rpc_valve(device):
     url = f"{api_base}/rpc?timeout=60000"
     wait_event = Event()  # Tạo một Event để chờ
 
-    log(name, "📞 Listening RPC...")
+    # Khởi tạo kết nối RS485
+    # rs485 = SerialCommunicate("/dev/ttyUSB0", 9600)  # chỉnh lại cổng cho đúng nếu cần
 
     while True:
         try:
@@ -90,30 +92,38 @@ def listen_rpc_valve(device):
                 params = rpc.get("params")
                 methodText = "Turned On" if method == "TURN_ON" else "Turned Off"
                 paramsText = f"Params: {params}" if params else "No Params"
-                log(name, f"⬇️  RPC received → {methodText} & {paramsText}")
+                log(name, f"RPC received → {methodText} & {paramsText}")
 
-                if method == "TURN_ON":
-                    device["state"] = "ON"
-                elif method == "TURN_OFF":
-                    device["state"] = "OFF"
+                if method in ("TURN_ON", "TURN_OFF"):
+                    # Cập nhật trạng thái thiết bị
+                    device["state"] = "ON" if method == "TURN_ON" else "OFF"
 
-                # Tải file hiện tại
-                state_data = load_device_file(SMARTVALVE_FILE)
+                    # Tải file hiện tại
+                    state_data = load_device_file(SMARTVALVE_FILE)
 
-                # Cập nhật đúng valve theo tên
-                if name == "SI Smart Valve 1":
-                    state_data["SI Smart Valve 1"] = device
-                elif name == "SI Smart Valve 2":
-                    state_data["SI Smart Valve 2"] = device
+                    # Cập nhật đúng valve
+                    if name == "SI Smart Valve 1":
+                        state_data["SI Smart Valve 1"] = device
+                        # relay_number = 1  # Relay 1 tương ứng với Smart Valve 1
+                    elif name == "SI Smart Valve 2":
+                        state_data["SI Smart Valve 2"] = device
+                        # relay_number = 2  # Relay 2 tương ứng với Smart Valve 2
+                    # else:
+                    #     relay_number = None
 
-                # Ghi lại file
-                save_device_file(SMARTVALVE_FILE, state_data)
+                    # Ghi lại file nếu có cập nhật
+                    save_device_file(SMARTVALVE_FILE, state_data)
+
+                    # Gửi lệnh relay nếu xác định đúng relay_number
+                    # if relay_number:
+                    #     rs485.toggle_relay(relay_number, method == "TURN_ON")
 
                 send_attributes(api_base, headers, name, {"state": device["state"]})
+
             elif r.status_code == 408:
-                log(name, "⏳ RPC timeout")
+                log(name, "RPC timeout")
         except Exception as e:
-            log(name, f"❌ RPC error: {e}")
+            log(name, f"RPC error: {e}")
         wait_event.wait(0.5)
         
 # Định nghĩa hàm run_water_meter (lắng nghe SI Smart Valve và tải dữ liệu)
@@ -124,8 +134,6 @@ def run_water_meter(device):
     api_base = f"{HOST}/api/v1/{access_token}"
     headers = {"Content-Type": "application/json"}
     wait_event = Event()  # Tạo một Event để chờ
-
-    log(name, "🚀 Connected with device")
 
     while True:
         telemetry = {}
@@ -184,7 +192,6 @@ def run_other_device(device):
     api_base = f"{HOST}/api/v1/{access_token}"
     headers = {"Content-Type": "application/json"}
     wait_event = Event()
-    log(name, "🚀 Connected with device")
 
     if name.startswith("SI Smart Valve"):
         threading.Thread(target=listen_rpc_valve, args=(device,), daemon=True).start()
@@ -229,7 +236,7 @@ def main():
     devices = list(smart_valve.values()) + list(water_meter.values()) + list(soil_moisture.values())
 
     if not devices:
-        log("system", "❌ No devices found in the JSON files")
+        log("system", "No devices found in the JSON files")
         return
 
     threads = []

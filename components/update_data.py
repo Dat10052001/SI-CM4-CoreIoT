@@ -1,11 +1,11 @@
 import json
 import random
-import time
 import os
 
-PROCESSED_DATA_FILE = "processed_data.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.path.join(BASE_DIR, "../JSONdata/processed_data.json")
 
-def update_random_values(file_path, min_value=40, max_value=50, min_battery=30, max_battery=100):
+def update_random_values(file_path, min_value=60, max_value=70, min_battery=30, max_battery=100):
     """
     Cập nhật giá trị 'value' và 'battery' ngẫu nhiên trong khoảng [min_value, max_value] và [min_battery, max_battery] cho tất cả các thiết bị.
 
@@ -46,4 +46,4 @@ def update_random_values(file_path, min_value=40, max_value=50, min_battery=30, 
 
 if __name__ == "__main__":
     print("🔄 Bắt đầu cập nhật giá trị ngẫu nhiên cho processed_data.json...")
-    update_random_values(PROCESSED_DATA_FILE)
+    update_random_values(DATA_FILE)
