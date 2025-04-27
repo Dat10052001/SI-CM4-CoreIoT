@@ -89,10 +89,8 @@ def listen_rpc_valve(device):
             if r.status_code == 200:
                 rpc = r.json()
                 method = rpc.get("method")
-                params = rpc.get("params")
-                methodText = "Turned On" if method == "TURN_ON" else "Turned Off"
-                paramsText = f"Params: {params}" if params else "No Params"
-                log(name, f"RPC received → {methodText} & {paramsText}")
+                telemetry = {"method": rpc.get("method")}
+                log(name, f"RPC received {format_data(telemetry)}")
 
                 if method in ("TURN_ON", "TURN_OFF"):
                     # Cập nhật trạng thái thiết bị
