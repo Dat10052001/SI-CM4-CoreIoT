@@ -146,13 +146,6 @@ def run_water_meter(device):
         valve_state1 = smart_valve_devices.get("SI Smart Valve 1").get("state", "OFF")
         valve_state2 = smart_valve_devices.get("SI Smart Valve 2").get("state", "OFF")
 
-        # Kiểm tra nếu ngày mới bắt đầu
-        current_time = datetime.now().strftime("%H:%M:%S")
-        if current_time == "00:00:00":
-            water_meter_devices["SI Water Meter 1"]["config"]["pulseCounter"] = 0
-            water_meter_devices["SI Water Meter 2"]["config"]["pulseCounter"] = 0
-            save_device_file(WATERMETER_FILE, water_meter_devices)
-
         if is_water_meter_1 and valve_state1 == "ON":
             pulse_counter1 = water_meter_devices["SI Water Meter 1"]["config"]["pulseCounter"]
             pulse_counter1 += increment
