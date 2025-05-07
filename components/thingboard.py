@@ -202,11 +202,9 @@ def run_other_device(device):
                 for key, sensor in soil_data.items():
                     if name == key:
                         telemetry[sensor_name] = sensor["value"]
+                        telemetry["battery"] = sensor["battery"]
                                   
         # Thêm giá trị battery vào telemetry nếu có
-        if "battery" in config:
-            telemetry["battery"] = config["battery"]
-
         elif config:
             telemetry = config
 
@@ -224,8 +222,7 @@ def main():
     water_meter = load_device_file(WATERMETER_FILE)
 
     # Combine all devices into a single list
-    devices = list(smart_valve.values()) + list(water_meter.values()) 
-    # + list(soil_moisture.values())
+    devices = list(smart_valve.values()) + list(water_meter.values()) + list(soil_moisture.values())
 
     if not devices:
         log("system", "No devices found in the JSON files")
