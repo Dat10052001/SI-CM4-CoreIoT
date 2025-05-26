@@ -89,13 +89,12 @@ def listen_rpc_valve(device):
             if r.status_code == 200:
                 rpc = r.json()
                 method = rpc.get("method")
-                params = rpc.get("params")
                 telemetry = {"method": rpc.get("method")}
                 log(name, f"RPC received {format_data(telemetry)}")
 
-                if params in ("ON", "OFF"):
+                if method in ("TURN_ON", "TURN_OFF"):
                     # Cập nhật trạng thái thiết bị
-                    device["state"] = "ON" if params == "ON" else "OFF"
+                    device["state"] = "ON" if method == "TURN_ON" else "OFF"
 
                     # Tải file hiện tại
                     state_data = load_device_file(SMARTVALVE_FILE)
@@ -117,7 +116,7 @@ def listen_rpc_valve(device):
                     # if relay_number:
                     #     rs485.toggle_relay(relay_number, method == "TURN_ON")
 
-                send_attributes(api_base, headers, name, {"POWER": device["state"]})
+                send_attributes(api_base, headers, name, {"state": device["state"]})
 
             elif r.status_code == 408:
                 log(name, "RPC timeout")
@@ -223,8 +222,7 @@ def main():
     water_meter = load_device_file(WATERMETER_FILE)
 
     # Combine all devices into a single list
-    devices = list(smart_valve.values()) 
-    # + list(water_meter.values()) + list(soil_moisture.values())
+    devices = list(smart_valve.values()) + list(water_meter.values()) + list(soil_moisture.values())
 
     if not devices:
         log("system", "No devices found in the JSON files")
